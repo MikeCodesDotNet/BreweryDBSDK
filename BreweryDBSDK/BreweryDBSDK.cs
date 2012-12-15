@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using System;
+using System.Collections.Generic;
+using RestSharp;
 using BreweryDBSDK.Entity;
 
 namespace BreweryDBSDK
@@ -14,19 +16,39 @@ namespace BreweryDBSDK
 
         public Beer GetBeer(string id)
         {
-            var client = new RestClient();
-            client.BaseUrl = _endPoint;
-            
+            var client = GetClient();
+
             var request = new RestRequest();
             request.Resource = string.Format("beer/{0}?key={1}",id,_key);
-
-            IRestResponse response = client.Execute(request);
-
-            // or automatically deserialize result
-            // return content type is sniffed but can be explicitly set via RestClient.AddHandler();
             var response2 = client.Execute<DTO.Beer>(request);
 
             return response2.Data.Data;
+        }   
+
+        private static RestClient GetClient()
+        {
+            var client = new RestClient();
+            client.BaseUrl = _endPoint;
+            return client;
+        }
+
+        public Beers SearchBeers(IDictionary<string,string> parameters)
+        {
+            var client = GetClient();
+            var request = new RestRequest();
+            request.Resource = AddParametersToString(parameters, string.Format("beers?key={0}", _key));
+            var response2 = client.Execute<DTO.Beers>(request);
+
+            return new Beers{currentPage = response2.Data.currentPage, beers = response2.Data.data, numberOfPages = response2.Data.numberOfPages};
+        }
+
+        private static String AddParametersToString(IDictionary<string, string> parameters, string call)
+        {
+            foreach (var search in parameters)
+            {
+                call = string.Format("{0}&{1}={2}", call, search.Key, search.Value);
+            }
+            return call;
         }
     }
 }
