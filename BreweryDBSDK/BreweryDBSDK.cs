@@ -1,7 +1,7 @@
 ﻿using RestSharp;
-using UntappdSDK.Entity;
+using BreweryDBSDK.Entity;
 
-namespace UntappdSDK
+namespace BreweryDBSDK
 {
     public class BreweryDBSDK
     {

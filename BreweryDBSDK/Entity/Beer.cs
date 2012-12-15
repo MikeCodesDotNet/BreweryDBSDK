@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UntappdSDK.Entity
+namespace BreweryDBSDK.Entity
 {
     public class Beer
     {
@@ -16,5 +16,7 @@ namespace UntappdSDK.Entity
         public string status { get; set; }
         public DateTime createDate { get; set; }
         public DateTime updateDate { get; set; }
+        public Glass glass { get; set; }
+        public Style style { get; set; }
     }
 }

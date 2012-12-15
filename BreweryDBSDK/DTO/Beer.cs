@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UntappdSDK.DTO
+namespace BreweryDBSDK.DTO
 {
     internal class Beer
     {
