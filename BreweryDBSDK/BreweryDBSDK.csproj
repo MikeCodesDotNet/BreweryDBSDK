@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BreweryDBSDK.cs" />
     <Compile Include="DTO\Beer.cs" />
+    <Compile Include="Entity\Available.cs" />
     <Compile Include="Entity\Beer.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Glass.cs" />
