@@ -1,6 +1,7 @@
 #BreweryDBSDK
 
-[logo]: http://www.pintlabs.com/wp-content/uploads/2011/05/Brewery-DB_finals-05-100x430.png ""
+![logo]: http://www.pintlabs.com/wp-content/uploads/2011/05/Brewery-DB_finals-05-100x430.png ""
+
 
 BreweryDBSDK is an open source library for interacting with BreweryDB.com (http://www.brewerydb.com).
 
