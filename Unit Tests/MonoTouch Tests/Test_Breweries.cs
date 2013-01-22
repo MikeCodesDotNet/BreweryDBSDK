@@ -19,7 +19,7 @@ namespace Tests
         {
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
             
-            BreweryDBSDK.Entity.Brewery brewery = db.GetBrewery("P8gV9M");
+            BreweryDBSDK.Entity.Brewery brewery = db.GetBreweryById("P8gV9M");
             
             if (brewery.name == "16 Mile Brewing Company")
             {
@@ -65,7 +65,7 @@ namespace Tests
             BreweryDBSDK.Entity.Brewery param = new BreweryDBSDK.Entity.Brewery();
             param.id = "d25euF";
             
-            BreweryDBSDK.Entity.Beers beers = db.GetBeers(param);
+            BreweryDBSDK.Entity.Beers beers = db.GetBeersByBrewery(param);
             
             foreach(BreweryDBSDK.Entity.Beer b in beers.beers)
             {
