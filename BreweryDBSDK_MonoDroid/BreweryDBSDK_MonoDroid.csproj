@@ -5,12 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{309DE1D0-CD6D-4009-BB3B-18778208FD8D}</ProjectGuid>
-    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{A630B316-FE14-4D19-B0EB-EBFB45246F5F}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>BreweryDBSDK_MonoTouch</RootNamespace>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>BreweryDBSDK_MonoTouch</AssemblyName>
+    <RootNamespace>BreweryDBSDK_MonoDroid</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>BreweryDBSDK_MonoDroid</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -21,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -29,37 +33,42 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="monotouch" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="DTO\" />
-    <Folder Include="Entity\" />
+    <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="BreweryDBSDK.cs" />
     <Compile Include="DTO\Beer.cs" />
     <Compile Include="DTO\Beers.cs" />
+    <Compile Include="DTO\Breweries.cs" />
+    <Compile Include="DTO\Brewery.cs" />
     <Compile Include="Entity\Available.cs" />
     <Compile Include="Entity\Beer.cs" />
     <Compile Include="Entity\Beers.cs" />
+    <Compile Include="Entity\Breweries.cs" />
+    <Compile Include="Entity\Brewery.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Glass.cs" />
     <Compile Include="Entity\Style.cs" />
-    <Compile Include="BreweryDBSDK.cs" />
-    <Compile Include="DTO\Breweries.cs" />
-    <Compile Include="DTO\Brewery.cs" />
-    <Compile Include="Entity\Breweries.cs" />
-    <Compile Include="Entity\Brewery.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\RestSharp-master\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
-      <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
-      <Name>RestSharp.MonoTouch</Name>
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\RestSharp-master\RestSharp.MonoDroid\RestSharp.MonoDroid.csproj">
+      <Project>{1B662C38-984F-4B6A-89B5-AFF7FCBE43A2}</Project>
+      <Name>RestSharp.MonoDroid</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
