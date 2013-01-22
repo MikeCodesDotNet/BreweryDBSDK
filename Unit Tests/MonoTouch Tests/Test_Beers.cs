@@ -19,7 +19,7 @@ namespace Tests
         {
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
 
-            BreweryDBSDK.Entity.Beer beer = db.GetBeer("AGgBSb");
+            BreweryDBSDK.Entity.Beer beer = db.GetBeerById("AGgBSb");
 
             if (beer.name == "Leffe Brune")
             {
@@ -35,7 +35,7 @@ namespace Tests
         {
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
             
-            BreweryDBSDK.Entity.Beer beer = db.GetBeer("AGgBSb");
+            BreweryDBSDK.Entity.Beer beer = db.GetBeerById("AGgBSb");
             
             if (beer.abv == Convert.ToDecimal(6.5))
             {
@@ -51,7 +51,7 @@ namespace Tests
         {
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
             
-            BreweryDBSDK.Entity.Beer beer = db.GetBeer("AGgBSb");
+            BreweryDBSDK.Entity.Beer beer = db.GetBeerById("AGgBSb");
 
             BreweryDBSDK.Entity.Style style = new BreweryDBSDK.Entity.Style();
             style.name = "Belgian-Style Dark Strong Ale";
@@ -70,7 +70,7 @@ namespace Tests
         {
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
             
-            BreweryDBSDK.Entity.Beer beer = db.GetBeer("AGgBSb");
+            BreweryDBSDK.Entity.Beer beer = db.GetBeerById("AGgBSb");
 
             BreweryDBSDK.Entity.Available av = new BreweryDBSDK.Entity.Available();
             av.name = "Year Round";
@@ -86,23 +86,20 @@ namespace Tests
         #endregion
 
         [Test]
-        public void SearchBeers()
+        public void GetBeerByUPC()
         {
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
 
-            IDictionary<string, string> param = 
-                new Dictionary<string, string>();
+            var param = "786150000304";
 
-            param.Add("beer", "leffe");
-
-            BreweryDBSDK.Entity.Beers beers = db.SearchBeers(param);
+            BreweryDBSDK.Entity.Beers beers = db.GetBeerByUPC(param);
 
             foreach(BreweryDBSDK.Entity.Beer b in beers.beers)
             {
                 Console.WriteLine(b.name);
             }
 
-            if(beers.beers.Count != 0)
+            if(beers.beers[0].name == "Leffe Blonde")
             {
                 Assert.True(true);
             } else
@@ -110,6 +107,7 @@ namespace Tests
                 Assert.Fail("No beers found");
             }
         }
+
 
 
     }

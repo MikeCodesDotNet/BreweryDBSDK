@@ -14,6 +14,7 @@ namespace BreweryDBSDK
             _key = apiKey;
         }
         
+        #region "Beers"
         /// <summary>
         /// Get a beer by its ID from the BreweryDB.
         /// </summary>
@@ -23,7 +24,7 @@ namespace BreweryDBSDK
         /// <param name='id'>
         /// Identifier.
         /// </param>
-        public Beer GetBeer(string id)
+        public Beer GetBeerById(string id)
         {
             var client = GetClient();
             
@@ -36,6 +37,27 @@ namespace BreweryDBSDK
         }   
         
         /// <summary>
+        /// Searchs the breweryDB database using a barcode unique product code.
+        /// </summary>
+        /// <returns>
+        /// A list of beer objects
+        /// </returns>
+        /// <param name='upc'>
+        /// Upc.
+        /// </param>
+        public Beers GetBeerByUPC(string upc)
+        {
+            var client = GetClient();
+            
+            var request = new RestRequest();
+            request.Resource = string.Format("search/upc?code={0}&key={1}", upc, _key);
+            
+            var response2 = client.Execute<DTO.Beers>(request);
+            
+            return new Beers {currentPage = response2.Data.currentPage, beers = response2.Data.data, numberOfPages = response2.Data.numberOfPages};
+        }
+        
+        /// <summary>
         /// Get a list of beers from BreweryDB by the manufacturer.
         /// </summary>
         /// <returns>
@@ -44,9 +66,8 @@ namespace BreweryDBSDK
         /// <param name='brewery'>
         /// Brewery object. (must have valid ID).
         /// </param>
-        public Beers GetBeers(Brewery brewery)
+        public Beers GetBeersByBrewery(Brewery brewery)
         {
-            
             var client = GetClient();
             
             var request = new RestRequest();
@@ -66,7 +87,7 @@ namespace BreweryDBSDK
         /// <param name='id'>
         /// Identifier.
         /// </param>
-        public Brewery GetBrewery(string id)
+        public Brewery GetBreweryById(string id)
         {
             var client = GetClient();
             
@@ -87,7 +108,7 @@ namespace BreweryDBSDK
         /// <param name='parameters'>
         /// The search type ('beers') and search term ('name of beer')
         /// </param>
-        public Beers SearchBeers(IDictionary<string,string> parameters)
+        public Beers GetBeer(IDictionary<string,string> parameters)
         {
             var client = GetClient();
             var request = new RestRequest();
@@ -97,20 +118,8 @@ namespace BreweryDBSDK
             return new Beers{currentPage = response2.Data.currentPage, beers = response2.Data.data, numberOfPages = response2.Data.numberOfPages};
         }
         
-        /// <summary>
-        /// Searchs the breweryDB database using a barcode unique product code.
-        /// </summary>
-        /// <returns>
-        /// A list of beer objects
-        /// </returns>
-        /// <param name='upc'>
-        /// Upc.
-        /// </param>
-        public Beers SearchBeers(string upc)
-        {
-            
-            return new Beers();
-        }
+        
+#endregion
         
         /// <summary>
         /// The for a brewery by name.
