@@ -12,12 +12,13 @@ BreweryDBSDK is an open source library for interacting with BreweryDB.com (http:
 * Searching for beers by name
 * Searching for breweries by name
 * MonoTouch support
-
+* MonoDroid support
+* Unit Tests
 
 ## Comming Soon
 
 * Implentation of the entire BreweryDB API
-* MonoDroid support
+
 
 ## Unit Tests
 
