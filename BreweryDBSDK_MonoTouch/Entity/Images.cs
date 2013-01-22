@@ -1,12 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace BreweryDBSDK_MonoTouch
+namespace BreweryDBSDK.Entity
 {
-    public class Images
+    public class Images : Labels
     {
-        public Images()
-        {
-        }
+
     }
 }
 
