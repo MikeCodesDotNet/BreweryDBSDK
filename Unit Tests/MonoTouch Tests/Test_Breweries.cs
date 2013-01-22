@@ -17,7 +17,7 @@ namespace Tests
         [Test]
         public void GetBreweryNameByID()
         {
-            db = new BreweryDBSDK.BreweryDBSDK("716ab38546fdfc49d75964861f413b6f");
+            db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
             
             BreweryDBSDK.Entity.Brewery brewery = db.GetBrewery("P8gV9M");
             
@@ -63,7 +63,7 @@ namespace Tests
             db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
             
             BreweryDBSDK.Entity.Brewery param = new BreweryDBSDK.Entity.Brewery();
-            param.id = "opTwlP";
+            param.id = "d25euF";
             
             BreweryDBSDK.Entity.Beers beers = db.GetBeers(param);
             
