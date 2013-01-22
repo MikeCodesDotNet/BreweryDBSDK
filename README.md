@@ -1,4 +1,4 @@
-# [BreweryDBSDK]
+#BreweryDBSDK
 
 BreweryDBSDK is an open source library for interacting with BreweryDB.com (http://www.brewerydb.com).
 
