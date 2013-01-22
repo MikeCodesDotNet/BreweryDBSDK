@@ -55,6 +55,8 @@
     <Compile Include="DTO\Brewery.cs" />
     <Compile Include="Entity\Breweries.cs" />
     <Compile Include="Entity\Brewery.cs" />
+    <Compile Include="Entity\Labels.cs" />
+    <Compile Include="Entity\Images.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Downloads\RestSharp-master\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">

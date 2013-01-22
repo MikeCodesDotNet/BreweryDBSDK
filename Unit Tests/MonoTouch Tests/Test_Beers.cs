@@ -108,6 +108,76 @@ namespace Tests
             }
         }
 
+        [Test]
+        public void GetBeerVariations()
+        {
+            db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
+            
+            var param = new BreweryDBSDK.Entity.Beer();
+            param.id = "cqsB6i";
+            
+            BreweryDBSDK.Entity.Beers beers = db.GetBeerVariations(param);
+            
+            foreach(BreweryDBSDK.Entity.Beer b in beers.beers)
+            {
+                Console.WriteLine(b.name);
+            }
+            
+            if(beers.beers[0].id == "li0U6A")
+            {
+                Assert.True(true);
+            } else
+            {
+                Assert.Fail("No beers found");
+            }
+        }
+
+        [Test]
+        public void GetBeerByName()
+        {
+            db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
+
+            var param = "Leffe Blonde";
+            
+            BreweryDBSDK.Entity.Beers beers = db.GetBeerByName(param);
+            
+            foreach(BreweryDBSDK.Entity.Beer b in beers.beers)
+            {
+                Console.WriteLine(b.name);
+            }
+            
+            if(beers.beers[0].name == "Leffe Blonde")
+            {
+                Assert.True(true);
+            } else
+            {
+                Assert.Fail("No beers found");
+            }
+        }
+
+        [Test]
+        public void GetBeerLabels()
+        {
+            db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
+            
+
+           var param = "Leffe Blonde";
+            
+            BreweryDBSDK.Entity.Beers beers = db.GetBeerByName(param);
+            
+            foreach(BreweryDBSDK.Entity.Beer b in beers.beers)
+            {
+                Console.WriteLine(b.name);
+            }
+            
+            if(beers.beers[0].labels.icon != null)
+            {
+                Assert.True(true);
+            } else
+            {
+                Assert.Fail("No beers found");
+            }
+        }
 
 
     }

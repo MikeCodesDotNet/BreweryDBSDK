@@ -56,6 +56,8 @@
     <Compile Include="DTO\Brewery.cs" />
     <Compile Include="Entity\Breweries.cs" />
     <Compile Include="Entity\Brewery.cs" />
+    <Compile Include="Entity\Images.cs" />
+    <Compile Include="Entity\Labels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

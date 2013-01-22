@@ -17,6 +17,6 @@ namespace Tests
             UIApplication.Main(args, null, "UnitTestAppDelegate");
         }
 
-        public static string Key = "716ab38546fdfc49d75964861f413b6f";
+        public static string Key = "";
     }
 }

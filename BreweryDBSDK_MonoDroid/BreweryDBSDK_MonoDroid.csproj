@@ -57,6 +57,8 @@
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Glass.cs" />
     <Compile Include="Entity\Style.cs" />
+    <Compile Include="Entity\Images.cs" />
+    <Compile Include="Entity\Labels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

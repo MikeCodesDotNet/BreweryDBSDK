@@ -79,6 +79,46 @@ namespace BreweryDBSDK
         }
         
         /// <summary>
+        /// Searchs the BreweryDB database using the name of a beer.
+        /// </summary>
+        /// <returns>
+        /// A list of beers
+        /// </returns>
+        /// <param name='parameters'>
+        /// The search type ('beers') and search term ('name of beer')
+        /// </param>
+        public Beers GetBeerByName(string name)
+        {
+            var client = GetClient();
+            var request = new RestRequest();
+            request.Resource = string.Format("search?q={0}&type=beer&key={1}",name, _key);
+            var response2 = client.Execute<DTO.Beers>(request);
+            
+            return new Beers{currentPage = response2.Data.currentPage, beers = response2.Data.data, numberOfPages = response2.Data.numberOfPages};
+        }
+        
+        /// <summary>
+        /// Gets all the variations of this beer
+        /// </summary>
+        /// <returns>
+        /// A list of beers
+        /// </returns>
+        /// <param name='beer'>
+        /// Beer.
+        /// </param>
+        public Beers GetBeerVariations(Beer beer)
+        {
+            var client = GetClient();
+            var request = new RestRequest();
+            request.Resource = string.Format("beer/{0}/variations?key={1}",beer.id, _key);
+            var response2 = client.Execute<DTO.Beers>(request);
+            
+            return new Beers{currentPage = response2.Data.currentPage, beers = response2.Data.data, numberOfPages = response2.Data.numberOfPages};
+        }
+        
+#endregion
+        
+        /// <summary>
         /// Gets brewery data from BreweryDB from its unqiue ID
         /// </summary>
         /// <returns>
@@ -98,28 +138,6 @@ namespace BreweryDBSDK
             
             return response2.Data.Data;
         }
-        
-        /// <summary>
-        /// Searchs the BreweryDB database using the name of a beer.
-        /// </summary>
-        /// <returns>
-        /// A list of beers
-        /// </returns>
-        /// <param name='parameters'>
-        /// The search type ('beers') and search term ('name of beer')
-        /// </param>
-        public Beers GetBeer(IDictionary<string,string> parameters)
-        {
-            var client = GetClient();
-            var request = new RestRequest();
-            request.Resource = AddParametersToString(parameters, string.Format("{0}", _key));
-            var response2 = client.Execute<DTO.Beers>(request);
-            
-            return new Beers{currentPage = response2.Data.currentPage, beers = response2.Data.data, numberOfPages = response2.Data.numberOfPages};
-        }
-        
-        
-#endregion
         
         /// <summary>
         /// The for a brewery by name.

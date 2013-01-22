@@ -20,5 +20,6 @@ namespace BreweryDBSDK.Entity
         public Glass glass { get; set; }
         public Style style { get; set; }
         public Available available { get; set; }
+        public Labels labels {get; set;}
     }
 }

@@ -13,6 +13,7 @@ namespace BreweryDBSDK.Entity
         public string mailingListUrl {get; set;}
         public string established {get; set;}
         public string website {get; set;}
+        public Images images {get; set;}
 
     }
 }

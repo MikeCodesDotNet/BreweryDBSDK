@@ -56,7 +56,6 @@ namespace Tests
             }
         }
            
-        //Seems to be a problem with the API stopping this from working....
         [Test]
         public void GetAllBeersBreweryHas()
         {
@@ -81,6 +80,32 @@ namespace Tests
             }
         }
     
+        [Test]
+        public void GetBreweryImage()
+        {
+            db = new BreweryDBSDK.BreweryDBSDK(Application.Key);
+            
+            IDictionary<string, string> param = 
+                new Dictionary<string, string>();
+            
+            param.Add("brewery", "5 Boroughs Brewery");
+            
+            BreweryDBSDK.Entity.Breweries breweries = db.SearchBreweries(param);
+            
+            foreach(BreweryDBSDK.Entity.Brewery b in breweries.breweries)
+            {
+                Console.WriteLine(b.name);
+            }
+            
+            if(breweries.breweries[0].images.icon != null)
+            {
+                Assert.True(true);
+            } else
+            {
+                Assert.Fail("No Breweries found");
+            }
+        }
+
     }
 
 #endregion
